@@ -1,0 +1,39 @@
+﻿.imgbody {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.imgbody .row .imgdiv2 {
+    padding: 5px;
+}
+
+.imgbody .row .imgdiv {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+.imgbody .row .imgdiv .imgdivs {
+    border-radius: 5px;
+    overflow:hidden;
+}
+
+.imgbody .imgdelete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.imgbody .filedelete {
+    padding:5px;
+    cursor: pointer;
+}
+.imgbody img {
+    border-radius: 5px;
+    height: 160px;
+}
+
+.imgbottom {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

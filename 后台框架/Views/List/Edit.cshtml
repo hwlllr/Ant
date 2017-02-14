@@ -1,0 +1,256 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Frame/ANT/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <!--下拉框样式，放在LTE样式前-->
+    <link href="~/Frame/LTE/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/skins/_all-skins.min.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--自定义公共样式-->
+    <link href="~/Frame/ANT/css/ant.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/uploadify/uploadify.css" rel="stylesheet" />
+    <link href="~/Frame/ANT/css/upload.css" rel="stylesheet" />
+
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <section class="content">
+        <div class="box box-info ant-header" id="vue_1">
+            <div class="box-header with-border box-info">
+                <h3 class="box-title">{{header}}</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <label>标题</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="Title">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>回报率(%)</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="ReturnRate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <label>价格</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="Price">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>期限(月)</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="Term">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>状态</label>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <label>总数量</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="SumNum">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>售出数量</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Title" type="text" class="form-control input-sm" v-model="SoldNum">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>品种</label>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <label>开售时间</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control active setDate input-sm" v-model="StartTime">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>停售时间</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control active setDate input-sm" v-model="EndTime">
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label>收益开始时间</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control active setDate input-sm" v-model="ProfitStartTime">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="text-right text-right">
+                            <label>分红方式</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <label>描述</label>
+                    </div>
+                    <div class="col-md-10">
+                        <textarea id="SpecialReported" class="form-control" rows="5" v-model="Describes"></textarea>
+                    </div>
+                </div>
+                <div class="row imgbottom">
+                    <div class="col-md-2 text-right"><label class="control-label">图片</label></div>
+                    <div class="col-md-10">
+                        <div class="imgbody">
+                            <div class="file-drop-zone">
+                                <div style="padding:10px 10px;">
+                                    <div class="row imgsdiv">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="file-preview-status text-center text-success"></div>
+                                <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom_dotted">
+                    <label class="col-md-2 text-right control-label">选择文件</label>
+                    <div class="col-md-10 tl th">
+                        <div id="queue" hidden></div>
+                        <input id="file_upload1" name="file_upload" type="file">
+                        <!--<p class="help-block text-red">支持jpg、jpeg、png、gif格式，大小不超过2M,【要求上传外景照片及店面内景】</p>-->
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <button class="btn btn-success ant-margin-10" v-on:click="Save">保存</button>
+                            <button class="btn btn-primary ant-margin-10">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+    </section>
+
+    <script src="~/Frame/LTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Frame/vue/vue.js"></script>
+    <script src="~/Frame/vue/vue-resource.min.js"></script>
+    <script src="~/Frame/ANT/js/bootstrap.min.js"></script>
+    <script src="~/Frame/LTE/dist/js/app.min.js"></script>
+    <!--以上必备-->
+    <script src="~/Frame/LTE/plugins/select2/select2.min.js"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/moment.js" charset="gb2312"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/daterangepicker.js" charset="gb2312"></script>
+    <script src="~/Frame/ANT/js/register.js"></script>
+    <script src="~/Frame/LTE/plugins/uploadify/jquery.uploadify.min.js"></script>
+    <script src="~/Frame/ANT/js/Upload.js"></script>
+    <script type="text/javascript">
+
+        var menu = new Vue({
+            el: '#vue_1',
+            data: {
+                header: "新增",
+                Title: "",
+                ReturnRate:"",
+                Price: "",
+                Term: "",
+                SumNum: "",
+                SoldNum: "",
+                StartTime: "",
+                EndTime: "",
+                ProfitStartTime:"",
+                Describes:"",
+                type:0,
+                Id:0
+            },
+            methods: {
+                "Save": function () {
+                    var url = "/LYAdmin/Save"
+                    var httpOptions = {
+                        params: {
+                            Title:this.Title,
+                            ReturnRate:this.ReturnRate,
+                            Price: this.Price,
+                            Term:this.Term,
+                            SumNum:this.SumNum,
+                            SoldNum:this.SoldNum,
+                            Varieties: $('#sele2').val(),
+                            State:$('#sele1').val(),
+                            Dividend:$('#Sel_Dividend').val(),
+                            StartTime:this.StartTime,
+                            EndTime: this.EndTime,
+                            ProfitStartTime:this.ProfitStartTime,
+                            Describes: this.Describes,
+                            type:this.type,
+                            //上传的文件和图片-店面平面图
+                            fileName1: ls.Upload.fileNames('fileName1'),
+                            onlyName1: ls.Upload.fileNames('onlyName1'),
+                            Id:this.Id
+                        }
+                    };
+                    this.$http.get(url, httpOptions).then(function (response) {
+                        if (response.data.error==0) {
+                            alert(response.data.message);
+                            window.location.href = "/LYAdmin/List";
+                        }
+                        else {
+                            alert(response.data.message);
+                        }
+                    }, function (error) {
+                        // 响应错误回调
+                        alert(error, '错误');
+                    })
+                }
+            }, created: function () {
+
+            },
+            ready: function () {
+                ant.Common.select2();
+                ant.Common.date();
+                //图片文件上传绑定
+                ls.Upload.uploadStart($("#file_upload1"), $(".imgsdiv")[0], "fileName1", "onlyName1");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!--bootstrap样式-->
+    <link href="~/Frame/ANT/css/bootstrap.min.css" rel="stylesheet" />
+    <!--图标-->
+    <link rel="stylesheet" href="~/Frame/LTE/plugins/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!--图标-->
+    <link rel="stylesheet" href="~/Frame/LTE/plugins/ionicons/2.0.1/css/ionicons.min.css" />
+    <!--AdminLTE框架样式-->
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/skins/_all-skins.min.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <a href="#" class="logo">
+                <span class="logo-mini"><b>KJ</b></span>
+                <span class="logo-lg"><b>后台框架</b></span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Frame/LTE/dist/img/admin.jpg" class="user-image">
+                                <span>Admin</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header">
+                                    <img src="~/Frame/LTE/dist/img/admin.jpg" class="img-circle" alt="User Image">
+                                    <p>
+                                        Admin
+                                        <small>上一次登录时间：2016-5-10</small>
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">修改密码</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">登出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header"><b>菜单3</b></li>
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>功能列表</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu" id="Navigation">
+                            <li class="active"><a href="javascript:void(0);" v-on:click="gotoPage('/List/Index', $event)"><i class="fa fa-circle-o"></i>列表模板</a></li>
+                            <li><a href="#" v-on:click="gotoPage('/List/Edit', $event)"><i class="fa fa-circle-o"></i>图片上传</a></li>
+                            <li><a href="#" v-on:click="gotoPage('/Banner/Index', $event)"><i class="fa fa-circle-o"></i>轮播+验证码</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            <iframe id="mainFrame" scrolling="no" src="/List/Index" frameborder="0" style="padding: 0px; width: 100%; height: 1000px;"></iframe>
+        </div>
+
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="tab-content">
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                </div>
+            </div>
+        </aside>
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script src="~/Frame/LTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Frame/VUE/vue.js"></script>
+    <script src="~/Frame/VUE/vue-resource.min.js"></script>
+    <script src="~/Frame/ANT/js/bootstrap.min.js"></script>
+    <script src="~/Frame/LTE/dist/js/app.min.js"></script>
+    <script src="~/Frame/LTE/dist/js/layout.js" charset="gb2312"></script>
+
+    <script type="text/javascript">
+        var menu = new Vue({
+            el: '#Navigation',
+            data: {
+            },
+            methods: {
+                gotoPage: function (URL,e) {
+                    document.getElementById("mainFrame").src = URL;
+                    $(e.target).parent().siblings('.active').removeAttr('class');
+                    $(e.target).parent().attr('class', 'active');
+
+                    //this.$http.post(url, httpOptions).then(function (response) {
+                    //    if (response.data.error == 0) {
+                    //        this.menulist = response.data.user;
+                    //    }
+                    //    else {
+                    //        $.alert(response.data.message);
+                    //    }
+                    //}, function (error) {
+                    //    // 响应错误回调
+                    //    $.alert(error, '错误');
+                    //})
+                }
+            },
+            created: function () {
+            }
+        });
+    </script>
+</body>
+</html>

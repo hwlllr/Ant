@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>微信支付</title>
+    <script src="~/js/jQuery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            @Html.Raw(ViewBag.wxJsApiParam),//josn串
+             function (res)
+             {
+                 if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                     //付款成功
+                     $.post('/Wx/PaySuccess',{ orderID:'@ViewBag.orderID' },function (result) {
+                         if (result == 1) {
+                             location.href = '/Wx/PaySuccessPage';
+                         } else {
+                             alert('付款失败，返回结果为：' + result);
+                         }
+
+                     })
+                 }
+                 if(res.err_msg == "get_brand_wcpay_request:cancel" ) {
+                     //取消付款
+                     //alert("1分钱也不给");
+                     location.href = decodeURIComponent('@ViewBag.returnURL');
+                 }
+                 if(res.err_msg == "get_brand_wcpay_request:fail" ) {
+                     //支付失败
+                     alert("支付失败");
+                     location.href = '/Wx/PayErrorPage';
+                 }
+             }
+             );
+        }
+
+        function callpay()
+        {
+            if (typeof WeixinJSBridge == "undefined")
+            {
+                if (document.addEventListener)
+                {
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }
+                else if (document.attachEvent)
+                {
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }
+            else
+            {
+                jsApiCall();
+            }
+        }
+
+        $(document).ready(function(){
+            callpay();
+        });
+    </script>
+</head>
+
+
+
+<body>
+
+</body>
+</html>

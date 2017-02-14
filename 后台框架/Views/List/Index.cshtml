@@ -1,0 +1,239 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+    <link href="~/Frame/ANT/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <!--下拉框样式，放在LTE样式前-->
+    <link href="~/Frame/LTE/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/skins/_all-skins.min.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--自定义公共样式-->
+    <link href="~/Frame/ANT/css/ant.css" rel="stylesheet" />
+    <!---->
+    <link href="~/Frame/LTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+
+    <style type="text/css">
+        table {
+            empty-cells: show;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <section class="content" id="vue_1">
+        <div class="box box-info ant-header">
+            <div class="box-header with-border box-info">
+                <h3 class="box-title">搜素条件</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>标题</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="Title" id="Title" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>状态</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-control select2 input-sm">
+                                <option>状态1</option>
+                                <option>状态2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>开始日期</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="StartTime" type="text" class="form-control active setDate input-sm" id="StartTime">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>结束日期</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="EndTime" type="text" class="form-control active setDate input-sm" id="EndTime">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12">
+                            <button class="btn btn-success btn-sm pull-right" v-on:click="loaddata(1,true)">查询</button>
+                            <div class="ant-margin-10 pull-right"></div>
+                            <button class="btn btn-primary btn-sm pull-right" v-on:click="operation(0)">新增</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">数据列表</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <div style="overflow: auto; width: 100%;">
+                    <table id="example1" class="table table-bordered table-striped dataTable">
+                        <thead>
+                            <tr>
+                                <th>列表头</th>
+                                <th>列表头</th>
+                                <th>列表头</th>
+                                <th>列表头</th>
+                                <th>列表头</th>
+                                <th>列表头</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td><button class="btn btn-info btn-sm">编辑</button></td>
+                            </tr>
+                            <tr>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td><button class="btn btn-info btn-sm">编辑</button></td>
+                            </tr>
+                            <tr>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td><button class="btn btn-info btn-sm">编辑</button></td>
+                            </tr>
+                            <tr>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td><button class="btn btn-info btn-sm">编辑</button></td>
+                            </tr>
+                            <tr>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td>数据</td>
+                                <td><button class="btn btn-info btn-sm">编辑</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="pull-left">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li class="disabled">
+                            <a href='javascript:void(0);'>上一页</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0);'>1</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0);'>2</a>
+                        </li>
+                        <li class="active">
+                            <a href='javascript:void(0);'>3</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0);'>4</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0);'>5</a>
+                        </li>
+                        <li>
+                            <a href='javascript:void(0);'>下一页</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-left" style="margin-left:10px;">
+                    <input id="StoreName1" type="text" class="form-control input-sm" style="width:50px" v-model="pages">
+                </div>
+                <div class="pull-left" style="margin-left:10px;">
+                    <button class="btn btn-success btn-sm pull-right" v-on:click="loaddata(this.pages,true)">跳转</button>
+                </div>
+                <div class="pull-right ant-padding-top-5">
+                    条
+                </div>
+                <div class="pull-right">
+                    <select class="form-control input-sm pull-right" v-model="column" v-on:change="loaddata(this.page,true)"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>
+                </div>
+                <div class="pull-right ant-padding-top-5">每页显示</div>
+            </div>
+        </div>
+
+    </section>
+    <script src="~/Frame/LTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Frame/VUE/vue.js"></script>
+    <script src="~/Frame/VUE/vue-resource.min.js"></script>
+    <!--过滤器-->
+    <script src="~/Frame/VUE/app_addon.js"></script>
+    <script src="~/Frame/ANT/js/bootstrap.min.js"></script>
+    <script src="~/Frame/LTE/dist/js/app.min.js"></script>
+
+    <script src="~/Frame/LTE/plugins/select2/select2.min.js"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/moment.js" charset="gb2312"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/daterangepicker.js" charset="gb2312"></script>
+    <script src="~/Frame/ANT/js/register.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //控件绑定
+            ant.Common.select2();
+            ant.Common.date();
+        })
+    </script>
+</body>
+</html>

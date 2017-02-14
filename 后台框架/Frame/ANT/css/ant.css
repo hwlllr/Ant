@@ -1,0 +1,28 @@
+﻿.ant-header .ant-label-height label {
+    margin-top: 5px;
+}
+
+.ant-header .select2-container--default {
+    width: 100% !important;
+}
+
+.ant-header .select2-container--default .select2-selection {
+    padding: 4px 12px;
+    height: 30px;
+}
+
+.ant-header .row {
+    margin-bottom: 10px;
+}
+
+.ant-margin-10 {
+    margin: 10px;
+}
+
+.ant-padding-10 {
+padding:10px;
+}
+
+.ant-padding-top-5 {
+padding-top:5px;
+}
