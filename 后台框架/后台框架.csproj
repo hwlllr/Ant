@@ -197,8 +197,8 @@
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListController.cs" />
+    <Compile Include="Controllers\Redis配置连接操作1\Redis1Config.cs" />
     <Compile Include="Controllers\Redis配置连接操作1\redis1Controller.cs" />
-    <Compile Include="Controllers\Redis配置连接操作1\RedisConfig.cs" />
     <Compile Include="Controllers\Redis配置连接操作2\redis.cs" />
     <Compile Include="Controllers\Redis配置连接操作2\RedisController.cs" />
     <Compile Include="Controllers\Redis配置连接操作2\UserModel.cs" />

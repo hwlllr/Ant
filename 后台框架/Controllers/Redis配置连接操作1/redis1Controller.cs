@@ -12,7 +12,7 @@ namespace 后台框架.Controllers.Redis配置连接操作1
         // GET: redis1
         public ActionResult Index()
         {
-            using (IRedisClient con = RedisConfig.ClientManager.GetClient())
+            using (IRedisClient con = Redis1Config.ClientManager.GetClient())
             {
                 ////存数据
                 Dictionary<string, People> dic = new Dictionary<string, People>();
