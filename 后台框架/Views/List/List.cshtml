@@ -1,137 +1,335 @@
 ﻿
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>1</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="font/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="css/turquoise/style.css">
-    <link rel="stylesheet" type="text/css" href="css/animation.css">
-    <link rel="stylesheet" type="text/css" href="css/live-preview.css">
-    <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
-    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/motor.js"></script>
 
-    <!--[if IE 7]>
-        <link rel="stylesheet" type="text/css" href="css/font-awesome-ie7.min.css" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+    <link href="~/Frame/ANT/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <!--下拉框样式，放在LTE样式前-->
+    <link href="~/Frame/LTE/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/Frame/LTE/dist/css/skins/_all-skins.min.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!--[if lte IE 9]>
+    <!--自定义公共样式-->
+    <link href="~/Frame/ANT/css/ant.css" rel="stylesheet" />
+    <link href="~/Frame/LTE/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+
     <style type="text/css">
-        .nav label{
-            border-bottom:1px solid #CCCCCC;
-        }
-        .content h6{
-            background-color:#81EAE0;
+        table {
+            empty-cells: show;
+            border-collapse: collapse;
+            margin: 0 auto;
         }
     </style>
-    <![endif]-->
-
 </head>
 <body>
+    <section class="content" id="vue_1">
+        <div class="box box-info ant-header">
+            <div class="box-header with-border box-info">
+                <h3 class="box-title">搜素条件</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>标题</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="Title" id="Title" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>状态</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            @*<select class="form-control select2 input-sm" v-model="departmentval">
+                                <option v-for="option in departmentoptions" v-bind:value="option">
+                                    {{ option }}
+                                </option>
+                            </select>*@
+                            @Html.DropDownList("Sel_state", ViewData["StateData"] as SelectList, new { @class = "form-control select2 input-sm" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>开始日期</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="StartTime" type="text" class="form-control active setDate input-sm" id="StartTime">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            <div class="text-right ant-label-height">
+                                <label>结束日期</label>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <input v-model="EndTime" type="text" class="form-control active setDate input-sm" id="EndTime">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12">
+                            <button class="btn btn-success btn-sm pull-right" v-on:click="loaddata(1,true)">查询</button>
+                            <div class="ant-margin-10 pull-right"></div>
+                            <button class="btn btn-primary btn-sm pull-right" v-on:click="operation(0)">新增</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
 
-    <section class="nav">
-        <div>
-            <input id="label-1" name="lida" type="radio" checked />
-            <label for="label-1" id="item1"><i class="icon-globe" id="i1"></i>Label One</label>
-            <div class="content" id="a1">
-                <h4>Accordion Menu</h4>
-                <p>
-                    Web page backgrounds used to be commonplace, but they became unpopular once designers figured out
-                    that visitors to web pages didn’t want their eyes wrenched out by gaudy tiled background patterns. With
-                    text being as hard to read on-screen as it is, it’s adding insult to injury to inflict some nasty paisley mosaic
-                    background (or worse) on the poor reader, too.
-                </p>
-                <h6>
-                    The following collection of Web sites offers some outstanding references on
-                    CSS and its proper use on well-crafted Web pages. The very first reference
-                    from <a href="#">W3Schools.com</a> is terrific
-                </h6>
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">数据列表</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <div style="overflow: auto; width: 100%;">
+                    <table id="example1" class="table table-bordered table-striped dataTable">
+                        <thead>
+                            <tr>
+                                <th v-for="field in columns" v-bind:style="{width:field.width}">
+                                    {{field.title}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in tabledata.datalist">
+                                <td v-for="field in columns" style="line-height:2">
+                                    <span v-if="field.type=='action'" v-on:click="operation(getObjectValue(item,field.name))">
+                                        <button class="btn btn-info btn-sm">编辑</button>
+                                    </span>
+                                    <span v-else>
+                                        <template v-if="field.type=='badge'">
+                                            <span class="badge {{field.badge}}">{{getObjectValue(item,field.name)|jsondateconvert}}</span>
+                                        </template>
+                                        <template v-else>
+                                            {{getObjectValue(item,field.name)|jsondateconvert}}
+                                        </template>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <div class="pull-left">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li v-for="field in pagelist" v-bind:class="{ 'disabled':field.type=='disabled','active':field.type=='active' }" v-on:click="loaddata(field.value,field.type=='disabled'?false:true)">
+                            <a href='javascript:void(0);'>{{field.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-left" style="margin-left:10px;">
+                    <input id="StoreName1" type="text" class="form-control input-sm" style="width:50px" v-model="pages">
+                </div>
+                <div class="pull-left" style="margin-left:10px;">
+                    <button class="btn btn-success btn-sm pull-right" v-on:click="loaddata(this.pages,true)">跳转</button>
+                </div>
+                <div class="pull-right ant-padding-top-5">
+                    条
+                </div>
+                <div class="pull-right">
+                    <select class="form-control input-sm pull-right" v-model="column" v-on:change="loaddata(this.page,true)"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>
+                </div>
+                <div class="pull-right ant-padding-top-5">每页显示</div>
             </div>
         </div>
-        <div>
-            <input id="label-2" name="lida" type="radio" />
-            <label for="label-2" id="item2"><i class="icon-leaf" id="i2"></i>Label Two</label>
-            <div class="content" id="a2">
-                <h4>Accordion Menu</h4>
-                <p>
-                    Web page backgrounds used to be commonplace, but they became unpopular once designers figured out
-                    that visitors to web pages didn’t want their eyes wrenched out by gaudy tiled background patterns. With
-                    text being as hard to read on-screen as it is, it’s adding insult to injury to inflict some nasty paisley mosaic
-                    background (or worse) on the poor reader, too.
-                </p>
-                <h6>
-                    The following collection of Web sites offers some outstanding references on
-                    CSS and its proper use on well-crafted Web pages. The very first reference
-                    from <a href="#">W3Schools.com</a> is terrific
-                </h6>
-            </div>
-        </div>
-        <div>
-            <input id="label-3" name="lida" type="radio" />
-            <label for="label-3" id="item3"><i class="icon-trophy" id="i3"></i>Label Three</label>
-            <div class="content" id="a3">
-                <h4>Accordion Menu</h4>
-                <p>
-                    Web page backgrounds used to be commonplace, but they became unpopular once designers figured out
-                    that visitors to web pages didn’t want their eyes wrenched out by gaudy tiled background patterns. With
-                    text being as hard to read on-screen as it is, it’s adding insult to injury to inflict some nasty paisley mosaic
-                    background (or worse) on the poor reader, too.
-                </p>
-                <h6>
-                    The following collection of Web sites offers some outstanding references on
-                    CSS and its proper use on well-crafted Web pages. The very first reference
-                    from <a href="#">W3Schools.com</a> is terrific
-                </h6>
-            </div>
-        </div>
-        <div>
-            <input id="label-4" name="lida" type="radio" />
-            <label for="label-4" id="item4"><i class="icon-gift" id="i4"></i>Label four</label>
-            <div class="content" id="a4">
-                <h4>Accordion Menu</h4>
-                <p>
-                    Web page backgrounds used to be commonplace, but they became unpopular once designers figured out
-                    that visitors to web pages didn’t want their eyes wrenched out by gaudy tiled background patterns. With
-                    text being as hard to read on-screen as it is, it’s adding insult to injury to inflict some nasty paisley mosaic
-                    background (or worse) on the poor reader, too.
-                </p>
-                <h6>
-                    The following collection of Web sites offers some outstanding references on
-                    CSS and its proper use on well-crafted Web pages. The very first reference
-                    from <a href="#">W3Schools.com</a> is terrific
-                </h6>
-            </div>
-        </div>
-        <div>
-            <input id="label-5" name="lida" type="radio" />
-            <label for="label-5" id="item5"><i class="icon-coffee" id="i5"></i>Label Five</label>
-            <div class="content" id="a5">
-                <h4>Accordion Menu</h4>
-                <p>
-                    Web page backgrounds used to be commonplace, but they became unpopular once designers figured out
-                    that visitors to web pages didn’t want their eyes wrenched out by gaudy tiled background patterns. With
-                    text being as hard to read on-screen as it is, it’s adding insult to injury to inflict some nasty paisley mosaic
-                    background (or worse) on the poor reader, too.
-                </p>
-                <h6>
-                    The following collection of Web sites offers some outstanding references on
-                    CSS and its proper use on well-crafted Web pages. The very first reference
-                    from <a href="#">www.xwcms.net</a> is terrific
-                </h6>
-            </div>
-        </div>
+
     </section>
+    <script src="~/Frame/LTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Frame/vue/vue.js"></script>
+    <script src="~/Frame/vue/vue-resource.min.js"></script>
+    <script src="~/js/app_addon.js"></script>
+    <script src="~/Frame/ANT/js/bootstrap.min.js"></script>
+    <script src="~/Frame/LTE/dist/js/app.min.js"></script>
+    <!--以上必备-->
+    <script src="~/Frame/LTE/plugins/select2/select2.min.js"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/moment.js" charset="gb2312"></script>
+    <script src="~/Frame/LTE/plugins/DateRangePicker_New/daterangepicker.js" charset="gb2312"></script>
+    <script src="~/Frame/ANT/js/register.js"></script>
+    <script type="text/javascript">
+        var componet = new Vue({
+            el: '#vue_1',
+            data: {
+                column:10,//每页条数
+                page: 1,//当前页码
+                pages: "",//跳转页码
+                pagelist:[],//分页数据
 
-<!-- Visual Studio Browser Link -->
-<script type="application/json" id="__browserLink_initializationData">
-    {"appName":"Chrome","requestId":"6895657e63f84a46997a77c2046fea14"}
-</script>
-<script type="text/javascript" src="http://localhost:1676/60fc8e5a56d445c688d09e6e6a8db92c/browserLink" async="async"></script>
-<!-- End Browser Link -->
+                //查询条件
+                Title: '',
+                StartTime:'',
+                EndTime: '',
 
+                //列表标题
+                columns: [
+                   {
+                       title: '标题',
+                       name: 'Title',
+                       width: ''
+                   }
+                    , {
+                        title: '回报率',
+                        name: 'ReturnRate',
+                        width: ''
+                    }
+                    , {
+                        title: '价格',
+                        name: 'Price',
+                        width: ''
+                    }
+                    , {
+                        title: '期限',
+                        name: 'Term',
+                        width: ''
+                    }
+                    ,{
+                        title: '总数量',
+                        name: 'SumNum',
+                        width: ''
+                    }
+                    ,{
+                        title: '售出数量',
+                        name: 'SoldNum',
+                        width: ''
+                    }
+                    , {
+                        title: '品种',
+                        name: 'VarietiesName',
+                        type: 'badge',
+                        badge: 'bg-green',
+                        width: ''
+                    }
+                    , {
+                        title: '状态',
+                        name: 'StateName',
+                        type: 'badge',
+                        badge: 'bg-yellow',
+                        width: ''
+                    }
+                    , {
+                        title: '开始时间',
+                        name: 'StartTime',
+                        width: '150px'
+                    }
+                    , {
+                        title: '结束时间',
+                        name: 'EndTime',
+                        width: '150px'
+                    }
+                   , {
+                       title: '操作',
+                       name: 'Id',
+                       width: '',
+                       type: 'action',
+                       itemname: '编辑'
+                   }
+                ],
+                //列表数据
+                tabledata: {}
+            },
+            computed: {//实时计算
+                totalPages: function () {
+                    return Math.ceil(this.tabledata.total / this.column);
+                }
+            },
+            methods: {
+                loaddata: function (page, bo) {
+                    if (!bo) return false;
+
+                    var url = '/LYAdmin/page';
+                    var httpOptions = {
+                        params: {
+                            page: page,
+                            column: this.column,
+
+                            Title: this.Title,
+                            State:$('#Sel_state').val(),
+                            StartTime: this.StartTime,
+                            EndTime: this.EndTime,
+                        }
+                    };
+                    this.$http.get(url, httpOptions).then(function (response) {
+                        // 响应成功回调
+                        if (response.data.error == 0) {
+                            this.tabledata = response.data.model;
+                            this.page = response.data.model.page;
+                            this.pageconfig();
+                        }
+                        else {
+                            alert(response.data.message);
+                        }
+
+                    }, function (response) {
+                        // 响应错误回调
+                        alert('访问失败', '错误');
+
+                    })
+
+                },//加载数据
+                getObjectValue: function (object, path, defaultValue) {
+                    defaultValue = (typeof defaultValue == 'undefined') ? null : defaultValue
+
+                    var obj = object;
+                    if (path.trim() != '') {
+                        var keys = path.split('.');
+                        keys.forEach(function (key) {
+                            if (typeof obj[key] != 'undefined' && obj[key] !== null) {
+                                obj = obj[key];
+                            } else {
+                                obj = defaultValue;
+                                return;
+                            }
+                        })
+                    }
+                    return obj;
+                },//赛选列表数据
+                pageconfig: function () {
+                    this.pagelist = ant.Common.page(this.totalPages,this.page);
+                },//分页配置
+                operation: function (id) {
+                    window.location.href = "/LYAdmin/Edit/?id=" + id;
+                },
+            },
+            created: function () {
+                //控件绑定
+                ant.Common.select2();
+                ant.Common.date();
+            },
+            ready: function () {
+                //控件绑定
+                this.loaddata(1,true);
+            }
+        });
+    </script>
 </body>
 </html>
