@@ -65,13 +65,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\RedisAspNetProviders.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=1.0.4198.20619, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\redis1\ServiceStack.Interfaces.dll</HintPath>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>D:\自己的产品\PinChe\PinCheApi\Dll\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Redis, Version=2.2.0.20691, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dll\redis1\ServiceStack.Redis.dll</HintPath>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>D:\自己的产品\PinChe\PinCheApi\Dll\ServiceStack.Redis.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.1.604.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

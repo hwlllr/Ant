@@ -61,6 +61,11 @@
                             </div>
                         </div>
                         <div class="col-md-7">
+                            @*<select class="form-control select2 input-sm" v-model="departmentval">
+                                <option v-for="option in departmentoptions" v-bind:value="option">
+                                    {{ option }}
+                                </option>
+                            </select>*@
                             @Html.DropDownList("Sel_state", ViewData["StateData"] as SelectList, new { @class = "form-control select2 input-sm" })
                         </div>
                     </div>
