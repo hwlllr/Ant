@@ -305,6 +305,7 @@
   height: auto;
   margin: 0;
   cursor: default;
+  float: left;
 }
 
 .daterangepicker select.monthselect {

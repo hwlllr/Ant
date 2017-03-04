@@ -242,13 +242,12 @@
                     })
                 }
             }, created: function () {
-
+                ls.Upload.uploadStart($("#file_upload1"), $(".imgsdiv")[0], "fileName1", "onlyName1");
             },
             ready: function () {
                 ant.Common.select2();
                 ant.Common.date();
                 //图片文件上传绑定
-                ls.Upload.uploadStart($("#file_upload1"), $(".imgsdiv")[0], "fileName1", "onlyName1");
             }
         });
     </script>
