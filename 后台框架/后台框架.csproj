@@ -2766,6 +2766,9 @@
   <ItemGroup>
     <Content Include="Views\Wx\Auth.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Frame\ANT\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
