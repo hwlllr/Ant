@@ -2463,6 +2463,9 @@
     <Content Include="Frame\LTE\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Frame\LTE\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Frame\LTE\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Frame\LTE\plugins\uploadhtml5\jquery.uploadifive.min.js" />
+    <Content Include="Frame\LTE\plugins\uploadhtml5\uploadifive-cancel.png" />
+    <Content Include="Frame\LTE\plugins\uploadhtml5\uploadifive.css" />
     <Content Include="Frame\LTE\plugins\uploadify\Change Log.txt" />
     <Content Include="Frame\LTE\plugins\uploadify\jquery.uploadify.js" />
     <Content Include="Frame\LTE\plugins\uploadify\jquery.uploadify.min.js" />
@@ -2768,6 +2771,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frame\ANT\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\List\Edit1.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

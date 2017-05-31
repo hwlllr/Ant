@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit1</title>
+    <link href="~/Frame/LTE/plugins/uploadhtml5/uploadifive.css" rel="stylesheet" />
+    <script src="~/Frame/LTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="~/Frame/LTE/plugins/uploadhtml5/jquery.uploadifive.min.js"></script>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="queue"></div>
+    <input id="file_upload" name="file_upload" type="file">
+    <a href="javascript:$('#file_upload').uploadifive('upload')">Upload Files</a>
+    <div id="img"></div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function() {
+        $('#file_upload').uploadifive({
+            'auto': false,//true选择文件就会上传
+            'buttonText': '选择文件',//按钮名称
+            'formData'         : '',//传参
+            'dnd': true,//启动拖拽
+            'queueID': 'queue',//对应框ID
+            'uploadScript': '/List/EditPortrait',//上传后台
+            'multi': false,//是否允许选择多个
+            'queueSizeLimit':10,//队列最多上传个数
+            'itemTemplate': '<div class="uploadifive-queue-item"><div class="close"></div><span class="filename"></span><span class="fileinfo"></span></div>',//模板
+            'onUploadComplete': function (file, data) { alert("1") },//上传完成
+            'removeCompleted': false,//上传完成是否删除队列
+            'onAddQueueItem': function (file) {
+                $('#img').append('<img src="' + file.name + '">');
+            },//选择文件时触发
+            'onCancel': function () {
+            },//删除文件时触发
+            'onError': function (errorType) {
+                alert("错误");
+            },//选择错误时触发
+    });
+    });
+</script>

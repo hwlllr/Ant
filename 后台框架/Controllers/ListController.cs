@@ -141,5 +141,15 @@ namespace 后台框架.Controllers
                 return Json(new { Success = false, Message = "请选择要上传的文件！" }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        /// <summary>
+        /// 操作页
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Edit1()
+        {
+            return View();
+        }
     }
 }
