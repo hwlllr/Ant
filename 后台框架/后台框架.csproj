@@ -215,10 +215,8 @@
     <Compile Include="Wx\WxPublic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dll\redis1\ServiceStack.Common.dll" />
     <Content Include="Dll\redis1\ServiceStack.Interfaces.dll" />
     <Content Include="Dll\redis1\ServiceStack.Redis.dll" />
-    <Content Include="Dll\redis1\ServiceStack.Text.dll" />
     <Content Include="Dll\redis2\CachingFramework.Redis.dll" />
     <Content Include="Dll\LitJson.dll" />
     <Content Include="Dll\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
