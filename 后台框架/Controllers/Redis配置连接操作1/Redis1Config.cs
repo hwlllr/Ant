@@ -9,9 +9,11 @@ namespace 后台框架.Controllers.Redis配置连接操作1
 {
     public class Redis1Config
     {
-        //需要引用三个dll
+        //需要引用四个dll
         //ServiceStack.Interfaces
         //ServiceStack.Redis;
+        //ServiceStack.Common;
+        //ServiceStack.Text;
         public static PooledRedisClientManager ClientManager { get; private set; }
         static Redis1Config()
         {
